@@ -1,0 +1,19 @@
+bundle_id = "glm53f-bc1t-upload"
+abi_version = "cacheon-op-abi-v0"
+
+[competition]
+target = "forward_pass"
+mode = "slot"
+arena = "glm53flashpd-b300-node-v1"
+
+[[ops]]
+slot = "model.layers.*"
+source = "layerar/node.py"
+entry = "forward"
+prepare = "prepare"
+
+[[ops]]
+slot = "logits_processor"
+source = "layerar/lmh.py"
+entry = "forward_logits"
+prepare = "prepare_logits"
