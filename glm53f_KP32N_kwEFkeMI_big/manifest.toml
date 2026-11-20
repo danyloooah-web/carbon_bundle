@@ -1,0 +1,406 @@
+# r59 KW (-kw1): this tree = the base bundle + OUR component kda_wy32_route (KDA-WY32 + WY-ONORM target-verify kernel kda_wy32.py, served inside kda_v2_route's domain after a voted boot proof against stock's kernel; their path otherwise), added by r59/kw/apply_kw.py; every op, slot, source, entry and prepare unchanged.
+# r59 EP (-ep): this tree = the base bundle + OUR component moe_ep_route (the TP4 decode engine's routed NVFP4 experts resharded once at a target MoE layer's prepare from TP (288 experts x intermediate 512 a rank) to expert-parallel inside the TP group (72 whole experts a rank, intermediate 2048), voted probe, all or nothing across layers; in place: NEEDS THE USER'S OK), added by r59/ep/apply_ep.py.
+# r60 FP4C (-fp4c): this tree = the base bundle + OUR component fp4_cover_route (the king's dormant NVFP4 prefill groups switched on: G2a o_proj on the 7 AMAP-admitted DSA layers, G3 also on layers 1-2; LOSSY: audit + quality screen first), added by r60/fp4c/apply_fp4c.py.
+# r60 RIDERS KTG (-ktg): this tree = the base bundle + OUR component kda_track_route (KDA-TRACK-GLUE: the KDA prefix-track row copies and the conv-window snapshot as single Triton launches, bitwise with per-form voted proofs; prefill eager only), added by r60/riders/apply_ktg.py.
+# r60 RIDERS ERP (-erp): this tree = the base bundle + OUR component embed_repl_route (EMBED-REPL: a replicated TP2 embedding table for prefill eager calls of >= 8192 ids, no all-reduce, voted build + 2 voted bitwise checks) on the op model.embed_tokens (nodes.py forward_embed), added by r60/riders/apply_erp.py.
+# r60 FP4M (-fp4m): this tree = the base bundle + OUR component fp4_more_route (the king's dormant NVFP4 prefill groups G1 = shared expert (SKIP {3}) and G4 = q_b / kv_b on the 7 AMAP-admitted DSA layers switched on, on top of FP4C; LOSSY: audit + quality screen first), added by r60/fp4m/apply_fp4m.py.
+# r60 IDX-ALT (-idxalt): this tree = the base bundle + OUR component idx_dgo6_route (the TP4 decode engine's target-verify DSA indexer logits, next_n 6, by OUR CuTe-DSL kernel DGO6 idx_dgo6.py (a modified Apache-2.0 SGLang file, header kept) instead of DeepGEMM legacy; BITWISE: voted boot proof, OFF on every rank on any miss; top-k stock), added by r60/idxalt/apply_idxalt.py.
+bundle_id = "glm53f-pd-v32-kw1-ep-fp4c-ktg-erp-fp4m-idxalt"
+abi_version = "cacheon-op-abi-v0"
+
+[competition]
+target = "forward_pass"
+mode = "slot"
+arena = "glm53flashpd-b300-node-v1"
+
+[[ops]]
+slot = "model.layers.45.mlp"
+source = "glm53f_core/nodes.py"
+entry = "forward_dmoe"
+prepare = "prepare_dmoe"
+architectures = ["sm103"]
+cuda_sources = ["glm53f_core/fp8_pack.cu", "glm53f_core/kv_write.cu", "glm53f_core/logits_native.cu", "glm53f_core/rotq_native.cu", "glm53f_core/e31_fused_native.cu", "glm53f_core/p2p_graph_sum_native.cu", "glm53f_core/dsa_pagetable_native.cu", "glm53f_core/rows_push_native.cu", "glm53f_core/kda_conv_native.cu", "glm53f_core/moe_entry_native.cu", "glm53f_core/moe_wide_native.cu", "glm53f_core/moe_finalize_native.cu", "glm53f_core/mhc_fi_native.cu", "glm53f_core/mhc_fi_host.cuh", "glm53f_core/mhc_fi_kernels.cuh", "glm53f_core/mhc_fi_decode_stream.cuh", "glm53f_core/mhc_fi_short_stream.cuh", "glm53f_core/mhc_fi_crossover.cuh", "glm53f_core/mhc_fi_long_stream.cuh", "glm53f_core/mhc_fi_pdl.cuh", "glm53f_core/mhc_ar_decode.cuh", "glm53f_core/mhc_fp_native.cu", "glm53f_core/mhc_fp_long_stream.cuh"]
+
+[[ops]]
+slot = "model.layers.45.self_attn"
+source = "glm53f_core/nodes.py"
+entry = "forward_dsa"
+prepare = "prepare_dsa"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.0"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.1"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.2"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.3"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.4"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.5"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.6"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.7"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.8"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.9"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.10"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.11"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.12"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.13"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.14"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.15"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.16"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.17"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.18"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.19"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.20"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.21"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.22"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.23"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.24"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.25"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.26"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.27"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.28"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.29"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.30"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.31"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.32"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.33"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.34"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.35"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.36"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.37"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.38"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.39"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.40"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.41"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.42"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.43"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.layers.44"
+source = "glm53f_core/nodes.py"
+entry = "forward_layer"
+prepare = "prepare_layer"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "logits_processor"
+source = "glm53f_core/nodes.py"
+entry = "forward_logits"
+prepare = "prepare_logits"
+architectures = ["sm103"]
+cuda_sources = []
+
+[[ops]]
+slot = "model.embed_tokens"
+source = "glm53f_core/nodes.py"
+entry = "forward_embed"
+prepare = "prepare_embed"
+architectures = ["sm103"]
+cuda_sources = []
